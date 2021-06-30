@@ -1,24 +1,19 @@
 const Buttons = ({ handler, labels }) => {
-  console.log(labels);
   return (
-    <>
-      {labels.map(el => {
+    <div>
+      {labels.map(label => {
         return (
-          <button className="button" type="button" onClick={handler} key={el}>
-            {el}
+          <button
+            className="button"
+            type="button"
+            onClick={handler}
+            key={label}
+          >
+            {label}
           </button>
         );
       })}
-      {/* <button type="button" onClick={handler}>
-        Good
-      </button>
-      <button type="button" onClick={handler}>
-        Neutral
-      </button>
-      <button type="button" onClick={handler}>
-        Bad
-      </button> */}
-    </>
+    </div>
   );
 };
 export default Buttons;

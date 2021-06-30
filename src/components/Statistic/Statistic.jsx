@@ -1,13 +1,16 @@
-const Statistic = ({ options }) => {
+const Statistic = ({ states }) => {
+  const labelsParagraph = Object.keys(states);
   return (
-    <>
+    <div>
       <h3>Statistic</h3>
-      <div>
-        <p>Good: {options.good}</p>
-        <p>Neutral: {options.neutral}</p>
-        <p>Bad: {options.bad}</p>
-      </div>
-    </>
+      {labelsParagraph.map(label => {
+        return (
+          <p className="feedBackItem" key={`${label}-id`}>
+            {label}: {states[label] ? states[label] : 'not feedbacks'}
+          </p>
+        );
+      })}
+    </div>
   );
 };
 export default Statistic;
