@@ -6,7 +6,7 @@ const Statistic = ({ states }) => {
       {labelsParagraph.map(label => {
         return (
           <p className="feedBackItem" key={`${label}-id`}>
-            {label}: {states[label] ? states[label] : 'not feedbacks'}
+            {label}: {states[label] ? states[label] : 0}
           </p>
         );
       })}

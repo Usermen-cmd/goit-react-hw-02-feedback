@@ -20,20 +20,27 @@ class Feedback extends Component {
     return feedbacks.reduce((acc, num) => (acc += num), 0);
   };
 
-  // countPositiveFeedbackPercentage = () => {
-
-  // };
+  countPositiveFeedbackPercentage = (good, bad) => {
+    const persentage = Math.floor((good / (good + bad)) * 100);
+    return persentage;
+  };
   render() {
-    console.log(this.countTotalFeedback());
     const { good, neutral, bad } = this.state;
     const btnLabels = Object.keys(this.state);
-    const feedbackstotal = this.countTotalFeedback();
+    const feedbacksTotal = this.countTotalFeedback();
+    const positivrFeedbacks = this.countPositiveFeedbackPercentage(good, bad);
 
     return (
       <div className="feedBackService">
         <h2>Please leave feedback</h2>
         <Buttons handler={this.onButtonHandler} labels={btnLabels} />
-        <Statistic states={{ good, neutral, bad, feedbackstotal }} />
+        {feedbacksTotal ? (
+          <Statistic
+            states={{ good, neutral, bad, feedbacksTotal, positivrFeedbacks }}
+          />
+        ) : (
+          ''
+        )}
       </div>
     );
   }
