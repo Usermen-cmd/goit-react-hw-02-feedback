@@ -1,19 +1,52 @@
-const Buttons = ({ handler, labels }) => {
+import { CgSmile, CgSmileNone, CgSmileSad } from 'react-icons/cg';
+import css from '@emotion/styled';
+
+const Button = css.button`
+background-color: #4141f5;
+padding: 5px 20px;
+border-radius: 20px;
+color: #e2dbdb;
+font-size: 14px;
+font-weight: 500;
+display: inline-flex;
+align-items: center;
+border: none;
+cursor: pointer;
+margin-right: 10px;
+box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
+transition: transform 100ms linear 100ms;
+
+  &:hover{
+color: #fff;
+transform: scale(1.1);
+background-color: #3b3be0;
+box-shadow: -5px -5px 5px -5px rgba(34, 60, 80, 0.6) inset;
+}
+
+  svg{
+margin-right: 10px;
+width: 20px;
+height: auto;
+}
+`;
+
+const Buttons = ({ handler }) => {
   return (
     <div>
-      {labels.map(label => {
-        return (
-          <button
-            className="button"
-            type="button"
-            onClick={handler}
-            key={label}
-          >
-            {label}
-          </button>
-        );
-      })}
+      <Button type="button" onClick={handler} className="button">
+        <CgSmile />
+        Good
+      </Button>
+      <Button type="button" onClick={handler} className="button">
+        <CgSmileNone />
+        Neutral
+      </Button>
+      <Button type="button" onClick={handler} className="button">
+        <CgSmileSad />
+        Bad
+      </Button>
     </div>
   );
 };
+
 export default Buttons;
