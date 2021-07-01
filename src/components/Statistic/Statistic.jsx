@@ -25,7 +25,10 @@ Statistic.propTypes = {
     neutral: PropTypes.number.isRequired,
     bad: PropTypes.number.isRequired,
     'Total feedbacks': PropTypes.number,
-    'Positive feedbacks': PropTypes.string,
+    'Positive feedbacks': PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
   }),
 };
 
