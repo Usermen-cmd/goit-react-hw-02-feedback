@@ -1,18 +1,32 @@
+import PropTypes from 'prop-types';
+
+import { Header, Paragraph, Container } from 'components/styles/statistic';
+
 const Statistic = ({ states }) => {
   const labelsParagraph = Object.keys(states);
 
   return (
-    <div>
-      <h3>Statistic</h3>
+    <Container>
+      <Header>Statistic</Header>
       {labelsParagraph.map(label => {
         return (
-          <p className="feedBackItem" key={`${label}-id-statistic`}>
+          <Paragraph key={`${label}-id-statistic`}>
             {label}: {states[label]}
-          </p>
+          </Paragraph>
         );
       })}
-    </div>
+    </Container>
   );
+};
+
+Statistic.propTypes = {
+  states: PropTypes.shape({
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+    bad: PropTypes.number.isRequired,
+    'Total feedbacks': PropTypes.number,
+    'Positive feedbacks': PropTypes.string,
+  }),
 };
 
 export default Statistic;

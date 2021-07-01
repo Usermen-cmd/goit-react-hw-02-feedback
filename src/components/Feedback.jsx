@@ -1,16 +1,8 @@
 import { Component } from 'react';
 import { VscFeedback } from 'react-icons/vsc';
-import css from '@emotion/styled';
+import { Header, Container } from 'components/styles/feedback';
 import Statistic from 'components/Statistic/Statistic';
-import Buttons from './Buttons/Buttons';
-
-const Header = css.h2`
-color: #4f4f4f;
-margin-bottom: 15px;
-  svg{
-    margin-left: 20px;
-  }
-`;
+import Buttons from 'components/Buttons/Buttons';
 
 class Feedback extends Component {
   state = {
@@ -41,23 +33,25 @@ class Feedback extends Component {
     const positiveFeedbacks = this.countPositiveFeedbackPercentage(good, bad);
 
     return (
-      <div className="feedBackService">
-        <Header>
-          Please leave feedback <VscFeedback />
-        </Header>
-        <Buttons handler={this.onButtonHandler} />
-        {feedbacksTotal && (
-          <Statistic
-            states={{
-              good,
-              neutral,
-              bad,
-              'Total feedbacks': feedbacksTotal,
-              'Positive feedbacks': positiveFeedbacks,
-            }}
-          />
-        )}
-      </div>
+      <Container>
+        <div>
+          <Header>
+            Please leave feedback <VscFeedback />
+          </Header>
+          <Buttons handler={this.onButtonHandler} />
+          {feedbacksTotal && (
+            <Statistic
+              states={{
+                good,
+                neutral,
+                bad,
+                'Total feedbacks': feedbacksTotal,
+                'Positive feedbacks': positiveFeedbacks,
+              }}
+            />
+          )}
+        </div>
+      </Container>
     );
   }
 }
