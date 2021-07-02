@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Header, Paragraph, Container } from 'components/styles/statistic';
+import { Header, Paragraph, Container } from 'styles/statistic';
 
 const Statistic = ({ states }) => {
   const labelsParagraph = Object.keys(states);

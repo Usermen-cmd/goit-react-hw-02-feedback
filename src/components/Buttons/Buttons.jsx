@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { CgSmile, CgSmileNone, CgSmileSad } from 'react-icons/cg';
-import { Button, Container } from 'components/styles/buttons';
+import { Button, Container } from 'styles/buttons';
 
 const Buttons = ({ handler }) => {
   return (
