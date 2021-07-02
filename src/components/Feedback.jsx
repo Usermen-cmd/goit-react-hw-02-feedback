@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import { VscFeedback } from 'react-icons/vsc';
-import { Header, Container } from 'components/styles/feedback';
+import {
+  NotificationContainer,
+  NotificationManager,
+} from 'react-notifications';
+import { Header, Container } from 'styles/feedback';
 import Statistic from 'components/Statistic/Statistic';
 import Buttons from 'components/Buttons/Buttons';
 
@@ -14,6 +18,17 @@ class Feedback extends Component {
   onButtonHandler = e => {
     const labelBtn = e.currentTarget.textContent.toLowerCase();
     this.setState(prevState => ({ [labelBtn]: prevState[labelBtn] + 1 }));
+    this.createNotification();
+  };
+
+  createNotification = () => {
+    NotificationManager.success(
+      '',
+      'Thank you for your feedback.',
+      500,
+      null,
+      true,
+    );
   };
 
   countTotalFeedback = () => {
@@ -33,25 +48,29 @@ class Feedback extends Component {
     const positiveFeedbacks = this.countPositiveFeedbackPercentage(good, bad);
 
     return (
-      <Container>
-        <div>
-          <Header>
-            Please leave feedback <VscFeedback />
-          </Header>
-          <Buttons handler={this.onButtonHandler} />
-          {feedbacksTotal && (
-            <Statistic
-              states={{
-                good,
-                neutral,
-                bad,
-                'Total feedbacks': feedbacksTotal,
-                'Positive feedbacks': positiveFeedbacks,
-              }}
-            />
-          )}
-        </div>
-      </Container>
+      <>
+        <NotificationContainer />
+        <Container>
+          {this.props.children}
+          <div>
+            <Header>
+              Please leave feedback <VscFeedback />
+            </Header>
+            <Buttons handler={this.onButtonHandler} />
+            {feedbacksTotal && (
+              <Statistic
+                states={{
+                  good,
+                  neutral,
+                  bad,
+                  'Total feedbacks': feedbacksTotal,
+                  'Positive feedbacks': positiveFeedbacks,
+                }}
+              />
+            )}
+          </div>
+        </Container>
+      </>
     );
   }
 }

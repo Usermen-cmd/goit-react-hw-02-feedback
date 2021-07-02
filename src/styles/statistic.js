@@ -1,12 +1,12 @@
-import css from '@emotion/styled';
+import css from '@emotion/styled/macro';
 
 const Header = css.h3`
-color: #4f4f4f;
+color: ${({ theme }) => theme.headerColor};
 margin-bottom: 10px;
 `;
 
 const Paragraph = css.p`
-color: #3f3f3f;
+color: ${({ theme }) => theme.textColor};
 font-weight: 500;
 `;
 

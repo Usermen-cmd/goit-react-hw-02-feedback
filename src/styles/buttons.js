@@ -1,4 +1,4 @@
-import css from '@emotion/styled';
+import css from '@emotion/styled/macro';
 
 const Button = css.button`
 background-color: #4141f5;
